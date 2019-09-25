@@ -1,23 +1,41 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { SIGNUP_USER } from "../../queries";
+import Error from "../Error";
+
+const initialState = {
+  username: "umairx97",
+  password: "1234567",
+  email: "umair@graphql.com",
+  passwordConfirmation: "1234567"
+};
+
 export class Signup extends Component {
-  state = {
-    username: "",
-    password: "",
-    email: "",
-    passwordConfirmation: ""
-  };
+  state = { ...initialState };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event, signupUser) => {
+  clearState = () => {
+    this.setState({ ...initialState });
+  };
+
+  handleSubmit = async (event, signupUser) => {
     event.preventDefault();
     signupUser().then(data => {
-      console.log(data);
+      console.log(data.data.signupUser.token);
+      this.clearState();
     });
+  };
+
+  validateForm = () => {
+    const { username, email, password, passwordConfirmation } = this.state;
+
+    const isInvalid =
+      !username || !email || !password || passwordConfirmation !== password;
+
+    return isInvalid;
   };
 
   render() {
@@ -63,9 +81,14 @@ export class Signup extends Component {
                   name="passwordConfirmation"
                   placeholder="Confirm Password"
                 />
-                <button type="submit" className="button-primary">
+                <button
+                  disabled={loading || this.validateForm()}
+                  type="submit"
+                  className="button-primary"
+                >
                   Submit
                 </button>
+                {error && <p>{error.message}</p>}
               </form>
             );
           }}

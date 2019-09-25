@@ -5,13 +5,6 @@ import './App.css'
 import axios from 'axios'
 
 export class App extends Component {
-
-  async componentDidMount() {
-    const response = await axios.post("http://localhost:3001/graphql", { query: GET_ALL_RECIPES })
-    const { getAllRecipes } = response.data.data
-    console.log(getAllRecipes)
-  }
-
   render() {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -40,7 +40,7 @@ export class Signin extends Component {
         const { username, password } = this.state;
         return (
             <div className="App">
-                <h2 className="App"> Signup</h2>
+                <h2 className="App">Signin</h2>
                 <Mutation
                     mutation={SIGNIN_USER}
                     variables={{ username, password, }}

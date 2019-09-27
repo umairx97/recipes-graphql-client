@@ -14,6 +14,18 @@ export const GET_ALL_RECIPES = gql`
 `;
 
 
+export const GET_CURRENT_USER = gql`
+  query {
+    getCurrentUser {
+      username, 
+      email, 
+      joinDate
+
+    }
+  }
+`
+
+
 export const SIGNUP_USER = gql`
   mutation($username: String!, $password: String!, $email: String!) {
     signupUser(username: $username, password: $password, email: $email) {

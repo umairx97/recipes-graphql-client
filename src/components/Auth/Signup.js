@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { SIGNUP_USER } from "../../queries";
+import { withRouter } from 'react-router-dom'
 import Error from "../Error";
 
 const initialState = {
-  username: "umairx97",
-  password: "1234567",
-  email: "umair@graphql.com",
-  passwordConfirmation: "1234567"
+  username: "",
+  email: "",
+  password: "",
+  passwordConfirmation: ""
 };
 
 export class Signup extends Component {
@@ -98,4 +99,4 @@ export class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

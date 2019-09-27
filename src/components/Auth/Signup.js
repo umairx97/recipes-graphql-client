@@ -23,8 +23,8 @@ export class Signup extends Component {
 
   handleSubmit = async (event, signupUser) => {
     event.preventDefault();
-    signupUser().then(data => {
-      console.log(data.data.signupUser.token);
+    signupUser().then(({ data }) => {
+      localStorage.setItem("token", data.signupUser.token)
       this.clearState();
     });
   };

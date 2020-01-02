@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { SIGNIN_USER } from "../../queries";
 import { withRouter } from 'react-router-dom'
-import Error from "../Error";
 
 const initialState = {
     username: "",

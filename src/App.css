@@ -50,3 +50,12 @@ input, select, textarea {
   color: grey
 }
 
+.flexer { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-border { 
+  border: solid 1px red;
+}
